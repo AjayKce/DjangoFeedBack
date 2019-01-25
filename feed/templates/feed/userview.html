@@ -1,0 +1,23 @@
+{% extends 'feed/link.html' %}
+
+{% block link %}
+
+<div class="container">
+    {% for obj in all %}
+    <div class="row">
+        <span class="well well-sm col-lg-3 col-md-3 col-sm-3 col-xs-3">{{ obj.username }}</span>
+        <span class="well well-sm col-lg-3 col-md-3 col-sm-3 col-xs-3">{{ obj.email }}</span>
+        <form action="{% url 'updateuser' obj.id %}" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            {% csrf_token %}
+        <button class="btn btn-success col-lg-12 col-md-12 col-sm-12 col-xs-12">Edit</button>
+        </form>
+        <form action="{% url 'deleteuser' obj.id %}" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            {% csrf_token %}
+            <button class="btn btn-danger col-lg-12 col-md-12 col-sm-12 col-xs-12">Delete</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

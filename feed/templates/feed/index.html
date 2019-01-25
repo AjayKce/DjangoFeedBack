@@ -1,0 +1,109 @@
+{% extends 'feed/link.html' %}
+
+{% block link %}
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-0 col-xs-0"><br></div>
+        <div class="col-lg-12 col-md-12 col-sm-0 col-xs-0"><br></div>
+        <div class="col-lg-12 col-md-12 col-sm-0 col-xs-0"><br></div>
+        <div class="col-lg-12 col-md-12 col-sm-0 col-xs-0"><br></div>
+        <div class="col-lg-12 col-md-12 col-sm-0 col-xs-0"><br></div>
+        <div class="col-lg-3 col-md-3 col-sm-0 col-xs-0"></div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="indexOuter col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12"><br>
+                    <div class="col-lg-12 col-md-12 col-sm-0 col-xs-0"><b>
+                        <hr>
+                    </b></div>
+                    {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                    <form class="form " method="post" action="{% url 'adminstudents' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <span class="glyphicon glyphicon-folder-open"></span>
+                            Student
+                        </button>
+                    </form>
+                    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-2"></div>
+                    <form class="form" method="post" action="{% url 'adminfaculty' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <span class="glyphicon glyphicon-folder-open"></span>
+                            Faculty
+                        </button>
+                    </form>
+                    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-2"></div>
+                    {% csrf_token %}
+                    <form method="post" action="{% url 'logout' %}" class="form">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <span class="glyphicon glyphicon-log-out"></span>
+                        Logout
+                    </button>
+                    </form>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><br></div>
+                    <form method="post" action="{% url 'register' %}" class="form">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <span class="glyphicon glyphicon-user"></span><span class="glyphicon glyphicon-plus"></span>
+                            CreateUser
+                        </button>
+                    </form>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+                    <form method="post" action="{% url 'userview' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <span class="glyphicon glyphicon-user"></span>
+                            ViewUser
+                        </button>
+                    </form>
+                    {% else %}
+                    <form class="form" method="post" action="{% url 'feedbackdetail' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <span class="glyphicon glyphicon-folder-open"></span>
+                        feedbacks
+                    </button>
+                    </form>
+                    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-2"></div>
+                    <form class="form " method="post" action="{% url 'designation' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            create feedbacks
+                        </button>
+                    </form>
+                    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-2"></div>
+                    {% csrf_token %}
+                    <form method="post" action="{% url 'logout' %}" class="form">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <span class="glyphicon glyphicon-log-out"></span>
+                        Logout
+                    </button>
+                    </form>
+                    {% endif %}
+                    {% else %}
+                    <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+                    <button type="submit" class="btn btn-primary col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <span class="glyphicon glyphicon-log-in"></span>
+                        Login
+                    </button>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+                    </form>
+                    {% endif %}
+                    <div class="col-lg-12 col-md-12 col-sm-0 col-xs-0"><b>
+                        <hr>
+                    </b></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-0 col-xs-0"></div>
+    </div>
+
+</div>
+</body>
+{% endblock %}

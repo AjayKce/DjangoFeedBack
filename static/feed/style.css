@@ -1,0 +1,38 @@
+.indexOuter{
+    height:200px;
+    border-bottom:15px solid #26CB4B;
+    background-color:#9F9F9F;
+    box-shadow:5px 9px 3px #796F6F,-5px 9px 3px #786E6E;
+}
+
+.studentform{
+    height: 200px;
+    background-color:#F9E2E2;
+    box-shadow:5px 9px 3px #796F6F,-5px 9px 3px #786E6E;
+}
+
+.facultyform{
+    height: 200px;
+    background-color:#F9E2E2;
+    box-shadow:5px 9px 3px #796F6F,-5px 9px 3px #786E6E;
+}
+
+.adminform{
+    height: 200px;
+    background-color:#F9E2E2;
+    box-shadow:5px 9px 3px #796F6F,-5px 9px 3px #786E6E;
+}
+
+.studentfeed{
+    background-color:#E1F0F5;
+    box-shadow:5px 9px 3px #796F6F,-5px 9px 3px #786E6E;
+}
+
+.facultyfeed{
+    background-color:#E1F0F5;
+    box-shadow:5px 9px 3px #796F6F,-5px 9px 3px #786E6E;
+}
+
+.designationContent{
+    background-color: red;
+}

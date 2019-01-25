@@ -1,0 +1,1454 @@
+{% extends 'feed/link.html' %}
+
+{% block link %}
+<body >
+<ul class="well well-sm nav nav-pills">
+    <li class="active"><a data-toggle="tab" href="#all">ALL</a></li>
+    <li><a data-toggle="tab" href="#cse">CSE</a></li>
+    <li><a data-toggle="tab" href="#it">IT</a></li>
+    <li><a data-toggle="tab" href="#eee">EEE</a></li>
+    <li><a data-toggle="tab" href="#ece">ECE</a></li>
+    <li><a data-toggle="tab" href="#eie">EIE</a></li>
+    <li><a data-toggle="tab" href="#ete">ETE</a></li>
+    <li><a data-toggle="tab" href="#mech">MECH</a></li>
+    <li><a data-toggle="tab" href="#auto">AUTO</a></li>
+    <li><a data-toggle="tab" href="#civil">CIVIL</a></li>
+    <li>
+        <a class="well well-sm">
+            <form method="post" action="{% url 'adminstudentfilter' %}">
+                {% csrf_token %}
+                <label for="date1">From :</label>
+                <input id="date1" name="datef" type="date">
+                <label for="date2">To : </label>
+                <input id="date2" name="datet" type="date">
+                <button type="submit" class="btn btn-sm btn-primary">Filter</button>
+            </form>
+        </a>
+    </li>
+    <li>
+        <a>
+            <form method="post" action="{% url 'home' %}">
+                {% csrf_token %}
+                <button class="btn btn-primary" type="submit">Home</button>
+            </form>
+        </a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div id="all" class="tab-pane fade in active">
+        {% for obj in all %}
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                        <div class="panel-heading">
+                            <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                            <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                        </div>
+                        <div class="panel-body">{{ obj.feedback }}</div>
+                        <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                    </span>
+        </div>
+        {% endfor %}
+    </div>
+    <div id="cse" class="tab-pane fade in ">
+        <ul class="well well-sm nav nav-pills">
+            <li><a data-toggle="tab" href="#csey1">First Year</a></li>
+            <li><a data-toggle="tab" href="#csey2">Second Year</a></li>
+            <li><a data-toggle="tab" href="#csey3">Third Year</a></li>
+            <li><a data-toggle="tab" href="#csey4">Fouth Year</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="csey1" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#csey1s1">Semester 1</a></li>
+                    <li><a data-toggle="tab" href="#csey1s2">Semester 2</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="csey1s1" class="tab-pane fade in">
+                        {% for obj in cse1y1s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="csey1s2" class="tab-pane fade in">
+                        {% for obj in cse1y2s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="csey2" class="tab-pane fade in ">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#csey2s3">Semester 3</a></li>
+                    <li><a data-toggle="tab" href="#csey2s4">Semester 4</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="csey2s3" class="tab-pane fade in">
+                        {% for obj in cse2y3s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="csey2s4" class="tab-pane fade in">
+                        {% for obj in cse2y4s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="csey3" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#csey3s5">Semester 5</a></li>
+                    <li><a data-toggle="tab" href="#csey3s6">Semester 6</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="csey3s5" class="tab-pane fade in">
+                        {% for obj in cse3y5s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="csey3s6" class="tab-pane fade in">
+                        {% for obj in cse3y6s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="csey4" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#csey4s7">Semester 7</a></li>
+                    <li><a data-toggle="tab" href="#csey4s8">Semester 8</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="csey4s7" class="tab-pane fade in">
+                        {% for obj in cse4y7s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="csey4s8" class="tab-pane fade in">
+                        {% for obj in cse4y8s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="it" class="tab-pane fade in ">
+        <ul class="well well-sm nav nav-pills">
+            <li><a data-toggle="tab" href="#ity1">First Year</a></li>
+            <li><a data-toggle="tab" href="#ity2">Second Year</a></li>
+            <li><a data-toggle="tab" href="#ity3">Third Year</a></li>
+            <li><a data-toggle="tab" href="#ity4">Fouth Year</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="ity1" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#ity1s1">Semester 1</a></li>
+                    <li><a data-toggle="tab" href="#ity1s2">Semester 2</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="ity1s1" class="tab-pane fade in">
+                        {% for obj in it1y1s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="ity1s2" class="tab-pane fade in">
+                        {% for obj in it1y2s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="ity2" class="tab-pane fade in ">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#ity2s3">Semester 3</a></li>
+                    <li><a data-toggle="tab" href="#ity2s4">Semester 4</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="ity2s3" class="tab-pane fade in">
+                        {% for obj in it2y3s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="ity2s4" class="tab-pane fade in">
+                        {% for obj in it2y4s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="ity3" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#ity3s5">Semester 5</a></li>
+                    <li><a data-toggle="tab" href="#ity3s6">Semester 6</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="ity3s5" class="tab-pane fade in">
+                        {% for obj in it3y5s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="ity3s6" class="tab-pane fade in">
+                        {% for obj in it3y6s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="ity4" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#ity4s7">Semester 7</a></li>
+                    <li><a data-toggle="tab" href="#ity4s8">Semester 8</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="ity4s7" class="tab-pane fade in">
+                        {% for obj in it4y7s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="ity4s8" class="tab-pane fade in">
+                        {% for obj in it4y8s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="eee" class="tab-pane fade in ">
+        <ul class="well well-sm nav nav-pills">
+            <li><a data-toggle="tab" href="#eeey1">First Year</a></li>
+            <li><a data-toggle="tab" href="#eeey2">Second Year</a></li>
+            <li><a data-toggle="tab" href="#eeey3">Third Year</a></li>
+            <li><a data-toggle="tab" href="#eeey4">Fouth Year</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="eeey1" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#eeey1s1">Semester 1</a></li>
+                    <li><a data-toggle="tab" href="#eeey1s2">Semester 2</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="eeey1s1" class="tab-pane fade in">
+                        {% for obj in eee1y1s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="eeey1s2" class="tab-pane fade in">
+                        {% for obj in eee1y2s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="eeey2" class="tab-pane fade in ">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#eeey2s3">Semester 3</a></li>
+                    <li><a data-toggle="tab" href="#eeey2s4">Semester 4</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="eeey2s3" class="tab-pane fade in">
+                        {% for obj in eee2y3s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="eeey2s4" class="tab-pane fade in">
+                        {% for obj in eee2y4s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="eeey3" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#eeey3s5">Semester 5</a></li>
+                    <li><a data-toggle="tab" href="#eeey3s6">Semester 6</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="eeey3s5" class="tab-pane fade in">
+                        {% for obj in eee3y5s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="eeey3s6" class="tab-pane fade in">
+                        {% for obj in eee3y6s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="eeey4" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#eeey4s7">Semester 7</a></li>
+                    <li><a data-toggle="tab" href="#eeey4s8">Semester 8</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="eeey4s7" class="tab-pane fade in">
+                        {% for obj in eee4y7s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="eeey4s8" class="tab-pane fade in">
+                        {% for obj in eee4y8s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ece" class="tab-pane fade in ">
+        <ul class="well well-sm nav nav-pills">
+            <li><a data-toggle="tab" href="#ecey1">First Year</a></li>
+            <li><a data-toggle="tab" href="#ecey2">Second Year</a></li>
+            <li><a data-toggle="tab" href="#ecey3">Third Year</a></li>
+            <li><a data-toggle="tab" href="#ecey4">Fouth Year</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="ecey1" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#ecey1s1">Semester 1</a></li>
+                    <li><a data-toggle="tab" href="#ecey1s2">Semester 2</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="ecey1s1" class="tab-pane fade in">
+                        {% for obj in ece1y1s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="ecey1s2" class="tab-pane fade in">
+                        {% for obj in ece1y2s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="ecey2" class="tab-pane fade in ">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#ecey2s3">Semester 3</a></li>
+                    <li><a data-toggle="tab" href="#ecey2s4">Semester 4</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="ecey2s3" class="tab-pane fade in">
+                        {% for obj in ece2y3s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="ecey2s4" class="tab-pane fade in">
+                        {% for obj in ece2y4s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="ecey3" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#ecey3s5">Semester 5</a></li>
+                    <li><a data-toggle="tab" href="#ecey3s6">Semester 6</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="ecey3s5" class="tab-pane fade in">
+                        {% for obj in ece3y5s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="ecey3s6" class="tab-pane fade in">
+                        {% for obj in ece3y6s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="ecey4" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#ecey4s7">Semester 7</a></li>
+                    <li><a data-toggle="tab" href="#ecey4s8">Semester 8</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="ecey4s7" class="tab-pane fade in">
+                        {% for obj in ece4y7s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="ecey4s8" class="tab-pane fade in">
+                        {% for obj in ece4y8s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="eie" class="tab-pane fade in ">
+        <ul class="well well-sm nav nav-pills">
+            <li><a data-toggle="tab" href="#eiey1">First Year</a></li>
+            <li><a data-toggle="tab" href="#eiey2">Second Year</a></li>
+            <li><a data-toggle="tab" href="#eiey3">Third Year</a></li>
+            <li><a data-toggle="tab" href="#eiey4">Fouth Year</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="eiey1" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#eiey1s1">Semester 1</a></li>
+                    <li><a data-toggle="tab" href="#eiey1s2">Semester 2</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="eiey1s1" class="tab-pane fade in">
+                        {% for obj in eie1y1s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="eiey1s2" class="tab-pane fade in">
+                        {% for obj in eie1y2s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="eiey2" class="tab-pane fade in ">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#eiey2s3">Semester 3</a></li>
+                    <li><a data-toggle="tab" href="#eiey2s4">Semester 4</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="eiey2s3" class="tab-pane fade in">
+                        {% for obj in eie2y3s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="eiey2s4" class="tab-pane fade in">
+                        {% for obj in eie2y4s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="eiey3" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#eiey3s5">Semester 5</a></li>
+                    <li><a data-toggle="tab" href="#eiey3s6">Semester 6</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="eiey3s5" class="tab-pane fade in">
+                        {% for obj in eie3y5s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="eiey3s6" class="tab-pane fade in">
+                        {% for obj in eie3y6s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="eiey4" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#eiey4s7">Semester 7</a></li>
+                    <li><a data-toggle="tab" href="#eiey4s8">Semester 8</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="eiey4s7" class="tab-pane fade in">
+                        {% for obj in eie4y7s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="eiey4s8" class="tab-pane fade in">
+                        {% for obj in eie4y8s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ete" class="tab-pane fade in ">
+        <ul class="well well-sm nav nav-pills">
+            <li><a data-toggle="tab" href="#etey1">First Year</a></li>
+            <li><a data-toggle="tab" href="#etey2">Second Year</a></li>
+            <li><a data-toggle="tab" href="#etey3">Third Year</a></li>
+            <li><a data-toggle="tab" href="#etey4">Fouth Year</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="etey1" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#etey1s1">Semester 1</a></li>
+                    <li><a data-toggle="tab" href="#etey1s2">Semester 2</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="etey1s1" class="tab-pane fade in">
+                        {% for obj in ete1y1s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="etey1s2" class="tab-pane fade in">
+                        {% for obj in ete1y2s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="etey2" class="tab-pane fade in ">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#etey2s3">Semester 3</a></li>
+                    <li><a data-toggle="tab" href="#etey2s4">Semester 4</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="etey2s3" class="tab-pane fade in">
+                        {% for obj in ete2y3s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="etey2s4" class="tab-pane fade in">
+                        {% for obj in ete2y4s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="etey3" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#etey3s5">Semester 5</a></li>
+                    <li><a data-toggle="tab" href="#etey3s6">Semester 6</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="etey3s5" class="tab-pane fade in">
+                        {% for obj in ete3y5s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="etey3s6" class="tab-pane fade in">
+                        {% for obj in ete3y6s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="etey4" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#etey4s7">Semester 7</a></li>
+                    <li><a data-toggle="tab" href="#etey4s8">Semester 8</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="etey4s7" class="tab-pane fade in">
+                        {% for obj in ete4y7s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="etey4s8" class="tab-pane fade in">
+                        {% for obj in ete4y8s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mech" class="tab-pane fade in ">
+        <ul class="well well-sm nav nav-pills">
+            <li><a data-toggle="tab" href="#mechy1">First Year</a></li>
+            <li><a data-toggle="tab" href="#mechy2">Second Year</a></li>
+            <li><a data-toggle="tab" href="#mechy3">Third Year</a></li>
+            <li><a data-toggle="tab" href="#mechy4">Fouth Year</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="mechy1" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#mechy1s1">Semester 1</a></li>
+                    <li><a data-toggle="tab" href="#mechy1s2">Semester 2</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="mechy1s1" class="tab-pane fade in">
+                        {% for obj in mech1y1s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="mechy1s2" class="tab-pane fade in">
+                        {% for obj in mech1y2s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="mechy2" class="tab-pane fade in ">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#mechy2s3">Semester 3</a></li>
+                    <li><a data-toggle="tab" href="#mechy2s4">Semester 4</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="mechy2s3" class="tab-pane fade in">
+                        {% for obj in mech2y3s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="mechy2s4" class="tab-pane fade in">
+                        {% for obj in mech2y4s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="mechy3" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#mechy3s5">Semester 5</a></li>
+                    <li><a data-toggle="tab" href="#mechy3s6">Semester 6</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="mechy3s5" class="tab-pane fade in">
+                        {% for obj in mech3y5s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="mechy3s6" class="tab-pane fade in">
+                        {% for obj in mech3y6s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="mechy4" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#mechy4s7">Semester 7</a></li>
+                    <li><a data-toggle="tab" href="#mechy4s8">Semester 8</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="mechy4s7" class="tab-pane fade in">
+                        {% for obj in mech4y7s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="mechy4s8" class="tab-pane fade in">
+                        {% for obj in mech4y8s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="auto" class="tab-pane fade in ">
+        <ul class="well well-sm nav nav-pills">
+            <li><a data-toggle="tab" href="#autoy1">First Year</a></li>
+            <li><a data-toggle="tab" href="#autoy2">Second Year</a></li>
+            <li><a data-toggle="tab" href="#autoy3">Third Year</a></li>
+            <li><a data-toggle="tab" href="#autoy4">Fouth Year</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="autoy1" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#autoy1s1">Semester 1</a></li>
+                    <li><a data-toggle="tab" href="#autoy1s2">Semester 2</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="autoy1s1" class="tab-pane fade in">
+                        {% for obj in auto1y1s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="autoy1s2" class="tab-pane fade in">
+                        {% for obj in auto1y2s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="autoy2" class="tab-pane fade in ">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#autoy2s3">Semester 3</a></li>
+                    <li><a data-toggle="tab" href="#autoy2s4">Semester 4</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="autoy2s3" class="tab-pane fade in">
+                        {% for obj in auto2y3s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="autoy2s4" class="tab-pane fade in">
+                        {% for obj in auto2y4s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="autoy3" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#autoy3s5">Semester 5</a></li>
+                    <li><a data-toggle="tab" href="#autoy3s6">Semester 6</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="autoy3s5" class="tab-pane fade in">
+                        {% for obj in auto3y5s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="autoy3s6" class="tab-pane fade in">
+                        {% for obj in auto3y6s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="autoy4" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#autoy4s7">Semester 7</a></li>
+                    <li><a data-toggle="tab" href="#autoy4s8">Semester 8</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="autoy4s7" class="tab-pane fade in">
+                        {% for obj in auto4y7s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="autoy4s8" class="tab-pane fade in">
+                        {% for obj in auto4y8s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="civil" class="tab-pane fade in ">
+        <ul class="well well-sm nav nav-pills">
+            <li><a data-toggle="tab" href="#civily1">First Year</a></li>
+            <li><a data-toggle="tab" href="#civily2">Second Year</a></li>
+            <li><a data-toggle="tab" href="#civily3">Third Year</a></li>
+            <li><a data-toggle="tab" href="#civily4">Fouth Year</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="civily1" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#civily1s1">Semester 1</a></li>
+                    <li><a data-toggle="tab" href="#civily1s2">Semester 2</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="civily1s1" class="tab-pane fade in">
+                        {% for obj in civil1y1s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="civily1s2" class="tab-pane fade in">
+                        {% for obj in civil1y2s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="civily2" class="tab-pane fade in ">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#civily2s3">Semester 3</a></li>
+                    <li><a data-toggle="tab" href="#civily2s4">Semester 4</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="civily2s3" class="tab-pane fade in">
+                        {% for obj in civil2y3s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="civily2s4" class="tab-pane fade in">
+                        {% for obj in civil2y4s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="civily3" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#civily3s5">Semester 5</a></li>
+                    <li><a data-toggle="tab" href="#civily3s6">Semester 6</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="civily3s5" class="tab-pane fade in">
+                        {% for obj in civil3y5s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="civily3s6" class="tab-pane fade in">
+                        {% for obj in civil3y6s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="civily4" class="tab-pane fade in">
+                <ul class="well well-sm nav nav-pills">
+                    <li><a data-toggle="tab" href="#civily4s7">Semester 7</a></li>
+                    <li><a data-toggle="tab" href="#civily4s8">Semester 8</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="civily4s7" class="tab-pane fade in">
+                        {% for obj in civil4y7s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="civily4s8" class="tab-pane fade in">
+                        {% for obj in civil4y8s %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                                 <div class="panel-heading">
+                                    <b>From : </b>{{ obj.owner }}     <b>To: </b>{{ obj.staffName }}<br>
+                                     <b>Dept : </b>{{ obj.department }} <b>Year :</b>{{ obj.year }} <b>Semester :</b>{{ obj.semester }}
+                                 </div>
+                                    <div class="panel-body">{{ obj.feedback }}</div>
+                                 <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                                  </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<script>
+    $(document).ready(function () {
+        $('.panel-body').css({
+            'height': '150px',
+            'overflow': 'auto'
+        })
+        $('a').css({
+            'font-weight': 'bold'
+        })
+    })
+</script>
+
+{% endblock %}

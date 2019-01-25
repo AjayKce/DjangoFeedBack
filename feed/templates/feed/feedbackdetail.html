@@ -1,0 +1,60 @@
+{% extends 'feed/link.html' %}
+
+{% block link %}
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="well well-sm">
+                <center><h1>Hi {{ user.username }} your submitted feedback</h1></center>
+            </div>
+            <ul class="nav nav-pills red">
+                <li class="active"><a data-toggle="tab" href="#div1">AS STUDENT</a></li>
+                <li><a data-toggle="tab" href="#div2">AS FACULTY</a></li>
+            </ul>
+            <br>
+            <div class="tab-content">
+                <div id="div1" class="tab-pane fade in active">
+                    {% for obj in objects %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                        <div class="panel-heading">To: {{ obj.staffName }}</div>
+                        <div class="panel-body">{{ obj.feedback }}</div>
+                        <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                    </span>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div id="div2" class="tab-pane fade in ">
+                    {% for obj in object1 %}
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <span class="panel panel-success col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                        <div class="panel-heading">
+                            To: {{ obj.department.upper }} dept <br>
+                            <b>Year :</b> {{ obj.year }}  <b>Semester : </b>{{ obj.semester }}
+                        </div>
+                        <div class="panel-body">{{ obj.feedback }}</div>
+                        <div class="panel-footer">{{ obj.timestamp }}, <br>updated {{ obj.updated|timesince }} ago</div>
+                    </span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+    </html>
+
+    <script>
+        $(document).ready(function () {
+            $('.panel-body').css({
+                'height': '150px',
+                'overflow': 'auto'
+            })
+            $('a').css({
+                'font-weight':'bold'
+            })
+        })
+    </script>
+
+{% endblock %}

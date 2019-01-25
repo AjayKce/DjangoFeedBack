@@ -1,0 +1,78 @@
+{% extends 'feed/link.html' %}
+
+{% block link %}
+{#    {% if user.is_superuser %}#}
+{#    {% else %}#}
+        <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><br></div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><br></div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><br></div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><br></div>
+                <div class="col-lg-2 col-md-2 col-sm-0 col-xs-0">
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 studentfeed">
+                    <form method="post" action="{% url 'studentfeedbackcreate' %}">
+                        {% csrf_token %}
+                        <div class="studentFeedbackForm">
+                            <div class="studentformContent col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <br>
+                                <div class="department col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                                    <div class="dept col-lg-4 col-md-4 col-xs-12 col-sm-12">
+                                        <label for="id_department">Department : </label>
+                                        {{ form.department }}
+                                    </div>
+                                    <div class="year col-lg-4 col-md-4 col-xs-12 col-sm-12">
+                                        <label for="id_year">Year : </label>
+                                        {{ form.year }}
+                                    </div>
+                                    <div class="semester col-lg-4 col-md-4 col-xs-12 col-sm-12">
+                                        <label for="id_semester">semester : </label>
+                                        {{ form.semester }}
+                                    </div>
+                                    <div class="staffName col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <label for="id_staffName">Staff Name : </label>
+                                        {{ form.staffName }}
+                                    </div>
+                                    <div class="feedback col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <label for="id_feedback">Feedback : </label>
+                                        {{ form.feedback }}<br>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-0"></div>
+                                    <button type="submit" class="btn btn-primary col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        Submit
+                                    </button>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-0"></div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><br></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-0 col-xs-0">
+                </div>
+            </div>
+        </div>
+        </body>
+
+
+        <script>
+            $(document).ready(function () {
+                $('#id_department,#id_year,#id_semester,#id_staffName,#id_feedback').addClass('form-control')
+            })
+        </script>
+{#    {% endif %}#}
+{% endblock %}
+
+{#<h1>Add Resturent</h1>#}
+{#<form method="post">{% csrf_token %}#}
+{#    {{ form.as_p }}#}
+{#    {{ form.department }}#}
+{#    {{ form.year }}#}
+{#    {{ form.semester }}#}
+{#    {{ form.staffName }}#}
+{#    {{ form.feedback }}#}
+{#    <button type="submit">save</button>#}
+{#</form>#}
+

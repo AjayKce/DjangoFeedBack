@@ -1,0 +1,154 @@
+{% load staticfiles %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<!--bootstrap  link-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+      crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--jquery link-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>-->
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<script src="jquery-3.2.1.min.js"></script>
+
+<!--external Script-->
+<script src="{% static 'feed/script.js' %}"></script>
+<link rel=stylesheet href="{% static 'feed/style.css' %}">
+<script>
+    $(document).ready(function () {
+        $('body').css({
+            'background':'#D1C7DA'
+        })
+    })
+</script>
+<style>
+    .indexOuter{
+    height:200px;
+    border-bottom:15px solid #26CB4B;
+    background-color:#9F9F9F;
+    box-shadow:5px 9px 3px #796F6F,-5px 9px 3px #786E6E;
+}
+
+.studentform{
+    height: 200px;
+    background-color:#F9E2E2;
+    box-shadow:5px 9px 3px #796F6F,-5px 9px 3px #786E6E;
+}
+
+.facultyform{
+    height: 200px;
+    background-color:#F9E2E2;
+    box-shadow:5px 9px 3px #796F6F,-5px 9px 3px #786E6E;
+}
+
+.adminform{
+    height: 200px;
+    background-color:#F9E2E2;
+    box-shadow:5px 9px 3px #796F6F,-5px 9px 3px #786E6E;
+}
+
+.studentfeed{
+    background-color:#E1F0F5;
+    box-shadow:5px 9px 3px #796F6F,-5px 9px 3px #786E6E;
+}
+
+.facultyfeed{
+    background-color:#E1F0F5;
+    box-shadow:5px 9px 3px #796F6F,-5px 9px 3px #786E6E;
+}
+
+.designationContent{
+    background-color: red;
+}
+</style>
+
+{% if user.is_authenticated %}
+{% if user.is_superuser %}
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Feedback</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <li><a href="{% url 'home' %}"><span class="glyphicon glyphicon-home"> </span> Home</a></li>
+            <li><a href="{% url 'adminstudents' %}">
+                <span class="glyphicon glyphicon-folder-open"></span>
+                Student's Feedback</a>
+            </li>
+            <li><a href="{% url 'adminfaculty' %}">
+                <span class="glyphicon glyphicon-folder-open"></span>
+                Faculty Feedback</a>
+            </li>
+            <li><a href="{% url 'register' %}">
+                <span class="glyphicon glyphicon-user"></span><span class="glyphicon glyphicon-plus"></span>
+                CreateUser</a>
+            </li>
+            <li><a href="{% url 'userview' %}">
+                <span class="glyphicon glyphicon-user"></span>
+                ViewUser</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="{% url 'logout' %}">
+                    <span class="glyphicon glyphicon-log-out"></span>
+                    Logout</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+</nav>
+{% else %}
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Feedback</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <li><a href="{% url 'home' %}"><span class="glyphicon glyphicon-home"> </span> Home</a></li>
+            <li><a href="{% url 'feedbackdetail' %}">
+                <span class="glyphicon glyphicon-folder-open"></span>
+                Feedback</a>
+            </li>
+            <li><a href="{% url 'designation' %}">
+                <span class="glyphicon glyphicon-pencil"></span>
+                Create Feedback</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="{% url 'logout' %}">
+                    <span class="glyphicon glyphicon-log-out"></span>
+                    Logout</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+</nav>
+{% endif %}
+{% endif %}
+
+{% block link %}
+{% endblock %}

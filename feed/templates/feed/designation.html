@@ -1,0 +1,47 @@
+{% extends 'feed/link.html' %}
+
+{% block link %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-0 col-sm-0"><br></div>
+            <div class="col-lg-12 col-md-12 col-xs-0 col-sm-0"><br></div>
+            <div class="col-lg-12 col-md-12 col-xs-0 col-sm-0 ">
+                <div class="col-lg-12 col-md-12 col-xs-0 col-sm-0 out">
+                    <h1 class="well">Your Designation Please....................</h1>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-0 col-sm-0 "><br></div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 designationContent ">
+                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <form class="col-lg-6 col-md-6 col-sm-12 col-xs-12" method="post" action="{% url 'studentfeedbackcreate' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary col-lg-12 col-md-12 col-sm-12 col-xs-12">Student</button>
+                        </form>
+                        <form class="col-lg-6 col-md-6 col-sm-12 col-xs-12" method="post" action="{% url 'facultyfeedbackcreate' %}">
+                           {% csrf_token %}
+                            <button type="submit" class="btn btn-primary col-lg-12 col-md-12 col-sm-12 col-xs-12">Faculty</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+        .designationContent {
+            background-color:lightcyan;
+            height: 250px;
+            padding-top: 110px;
+            box-shadow: 5px 6px 4px grey,-5px 6px 4px grey;
+        }
+    h1 {
+        font-family: cursive;
+        text-shadow: 8px 6px 3px gainsboro;
+    }
+    .out{
+              box-shadow: 5px 6px 4px grey,-5px -6px 4px grey;
+    }
+    </style>
+{% endblock %}
