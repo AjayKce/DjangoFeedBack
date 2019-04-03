@@ -4,7 +4,9 @@ app developed by me at the time I have learned Django . This Project has Three m
 The superuser can filter and view the feedback submissions. The Student can give feedback to the staff and versa
 
 ## Test Link
-<a href="https://feed102.herokuapp.com/">Click Here</a>
+<a href="https://feed102.herokuapp.com/">Click Here</a><br>
+username : root<br>
+password: rootroot
 
 ## Screen Shots
 
